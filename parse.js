@@ -5,6 +5,25 @@ var fs = require("fs");
 
 var result;
 
+//via https://gist.github.com/karbassi/6216484
+String.prototype.smarten = function () {
+    return this
+        /* opening singles */
+        .replace(/(^|[-\u2014\s(\["])'/g, "$1\u2018")
+
+        /* closing singles & apostrophes */
+        .replace(/'/g, "\u2019")
+
+        /* opening doubles */
+        .replace(/(^|[-\u2014/\[(\u2018\s])"/g, "$1\u201c")
+
+        /* closing doubles */
+        .replace(/"/g, "\u201d")
+
+        /* em-dashes */
+        .replace(/--/g, "\u2014");
+};
+
 /****
 //
 // REGEXES!
@@ -24,12 +43,14 @@ var RegExps = {
 parser.addRule(RegExps.entry, function(entry) {
   //clean up newlines within entry
   //separate the date
-  var date = entry.match(RegExps.date);
-  console.log(date);
+  var date = entry.match(RegExps.date)[0];
+  entry = entry.replace(RegExps.date, '');
   entry = entry.replace(/\r\n\r\n/g, '\n');
+  entry = entry.smarten();
+  entry = entry.trim();
   return { 
     type: "entry",
-    date: date,
+    date: date.substring(0, date.length - 4),
     text: entry.trim()
   };
 });
@@ -39,5 +60,5 @@ fs.readFile('sourceText/ohlife_20141012-sanitized.txt', 'utf8', function (err, d
     result = err;
   }
   result = parser.toTree(data);
-  console.log(result.slice(0,1));
+  console.log(result.slice(0,10));
 });
