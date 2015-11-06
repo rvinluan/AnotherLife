@@ -5,10 +5,17 @@ var fs = require("fs");
 
 var result;
 
-// Define a rule using a regular expression 
-parser.addRule(/[\d-]+\r\n\r\n/ig, function(date) {
-  var cleanDateString = date.substr(0, date.length - 4);
-  return { type: "entryStart", date: cleanDateString };
+// this finds whole entries.
+// regex explanation:
+//      (date + newline) + (any text/newlines, lazy) + (date + newline OR end of string, lookahead) 
+parser.addRule(/[\d-]+\r\n\r\n[\s\S]+?(?=([\d-]+\r\n\r\n)|$)/g, function(entry) {
+  //clean up newlines within entry
+  entry = entry.replace(/\r\n\r\n/g, '\n');
+  return { 
+    type: "entry",
+    date: "",
+    text: entry.trim()
+  };
 });
 
 fs.readFile('sourceText/ohlife_20141012-sanitized.txt', 'utf8', function (err, data) {
