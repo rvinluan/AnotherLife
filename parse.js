@@ -36,8 +36,17 @@ var RegExps = {
   date: /[\d-]+\r\n\r\n/,
 
   // this finds whole entries.
-  // (date + newline) + (any text/newlines, lazy) + (date + newline OR end of string, lookahead) 
+  // (date + newline) + (any text/newlines, lazy) + lookahead(date + newline OR end of string) 
   entry: /[\d-]+\r\n\r\n[\s\S]+?(?=([\d-]+\r\n\r\n)|$)/g,
+
+  properNoun: /\w ((?:[A-Z][a-z]+[\s|\W])+)/g
+}
+
+function findProperNouns(entryText) {
+  var matchesArray;
+  while( (matchesArray = RegExps.properNoun.exec(entryText)) !== null ) {
+    console.log(matchesArray[1].substring(0, matchesArray[1].length-1));
+  }
 }
 
 parser.addRule(RegExps.entry, function(entry) {
@@ -60,5 +69,7 @@ fs.readFile('sourceText/ohlife_20141012-sanitized.txt', 'utf8', function (err, d
     result = err;
   }
   result = parser.toTree(data);
-  console.log(result.slice(0,10));
+  for(var i in result) {
+    findProperNouns(result[i].text);
+  }
 });
