@@ -1,1 +1,4 @@
-nltk-server/
+node-modules/
+config.json
+sourceText/
+temp.txt
