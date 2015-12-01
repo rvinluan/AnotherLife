@@ -10,6 +10,7 @@
   </head>
   <body>
     <div class="container">
+      <div class="intro">For privacy reasons, some of this text has been redacted from the publicly available version.</div>
       <div class="diary-contents"></div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -56,7 +57,7 @@
     })();
 
     var fileName = 
-    "/outputText/" + (location.search ? 'run-'+location.search.substr(1)+'__11-30-15' : 'outputText') + ".json";
+    "/outputText/" + (location.search ? 'run-2__11-30-15-redacted' : 'outputText') + ".json";
 
     if(location.hostname.indexOf("github.io") !== -1) {
       fileName = "https://raw.githubusercontent.com/rvinluan/AnotherLife/master/outputText/run-2__11-30-15.json"
@@ -68,6 +69,9 @@
       for(var entry in data) {
         var formatString = moment(data[entry].date).format("dddd, MMMM Do YYYY");
         newDiv = $("<div class='single-entry'>");
+        if(data[entry].type == "redacted") {
+          newDiv.addClass("redacted");
+        }
         newDiv.html(tmpl("entry_template", {
           entry_date: formatString,
           entry_text: htmlizeText(data[entry].text)

@@ -3,6 +3,15 @@ body, html {
     color: #222;
 }
 
+.intro {
+    width: 90%;
+    max-width: 400px;
+    margin: 200px auto;
+    font-style: italic;
+    color: #666;
+    text-align: center;
+}
+
 .diary-contents {
     width: 90%;
     max-width: 600px;
@@ -11,6 +20,10 @@ body, html {
 
 .single-entry {
     margin: 100px 0;
+}
+
+.redacted {
+    font-family: courier, monospace;
 }
 
 .single-entry p {
