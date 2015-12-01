@@ -4,7 +4,9 @@ This is a project for [NaNoGenMo 2015](https://github.com/dariusk/NaNoGenMo-2015
 
 # Final Output
 
-[.txt](https://raw.githubusercontent.com/rvinluan/AnotherLife/master/outputText/finalText.txt)
+[Formatted and Redacted](http://rvinluan.github.io/AnotherLife/)
+
+For privacy reasons, some of this text has been redacted from the publicly available version.
 
 ##The Premise
 [OhLife](http://ohlife.com/index.php) was an online diary service that you could write entries to via email. It shut down in 2014, but I had been using it for two years at that point and had written hundreds of entries. When it shut down I downloaded my entire archive of...60,000 words.
