@@ -1,0 +1,25 @@
+body, html {
+    font: normal normal 17px/1.5 "georgia", serif;
+    color: #222;
+}
+
+.diary-contents {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.single-entry {
+    margin: 100px 0;
+}
+
+.single-entry p {
+    margin-bottom: 30px;
+}
+
+.single-entry .date {
+    font: normal normal 14px/1 "helvetica neue", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 5px;
+}

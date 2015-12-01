@@ -1,0 +1,80 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="diary-contents"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="moment.min.js"></script>
+    <script type="text/html" id="entry_template">
+      <div class="date"><%=entry_date%></div>
+      <div class="text"><%=entry_text%></div>
+    </script>
+    <script>
+    // Simple JavaScript Templating
+    // John Resig - http://ejohn.org/ - MIT Licensed
+    (function(){
+      var cache = {};
+     
+      this.tmpl = function tmpl(str, data){
+        // Figure out if we're getting a template, or if we need to
+        // load the template - and be sure to cache the result.
+        var fn = !/\W/.test(str) ?
+          cache[str] = cache[str] ||
+            tmpl(document.getElementById(str).innerHTML) :
+         
+          // Generate a reusable function that will serve as a template
+          // generator (and which will be cached).
+          new Function("obj",
+            "var p=[],print=function(){p.push.apply(p,arguments);};" +
+           
+            // Introduce the data as local variables using with(){}
+            "with(obj){p.push('" +
+           
+            // Convert the template into pure JavaScript
+            str
+              .replace(/[\r\t\n]/g, " ")
+              .split("<%").join("\t")
+              .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+              .replace(/\t=(.*?)%>/g, "',$1,'")
+              .split("\t").join("');")
+              .split("%>").join("p.push('")
+              .split("\r").join("\\'")
+          + "');}return p.join('');");
+       
+        // Provide some basic currying to the user
+        return data ? fn( data ) : fn;
+      };
+    })();
+
+    var fileName = location.search ? 'run-'+location.search.substr(1)+'__11-30-15' : 'outputText';
+
+    $.getJSON('/outputText/'+fileName+'.json', function (data) {
+      var contents = $(".diary-contents"),
+        newDiv;
+      for(var entry in data) {
+        var formatString = moment(data[entry].date).format("dddd, MMMM Do YYYY");
+        newDiv = $("<div class='single-entry'>");
+        newDiv.html(tmpl("entry_template", {
+          entry_date: formatString,
+          entry_text: htmlizeText(data[entry].text)
+        }));
+        newDiv.appendTo(contents);
+      }
+    })
+
+    function htmlizeText(text) {
+      var newstring = "<p>" + text + "</p>";
+      return newstring.replace('\n', '</p><p>');
+    }
+    </script>
+  </body>
+</html>
