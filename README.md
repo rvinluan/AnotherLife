@@ -20,7 +20,3 @@ Afterwards I might try more fancy things like how to maintain continuity and con
 ##Writeup
 
 soon! =)
-
-##Also
-
-Check out the [formatted version.](http://rvinluan.github.io/AnotherLife/)

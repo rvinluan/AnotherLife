@@ -7,9 +7,16 @@ body, html {
     width: 90%;
     max-width: 400px;
     margin: 200px auto;
-    font-style: italic;
     color: #666;
+}
+
+.disclaimer {
+    font-style: italic;
+}
+
+h1 {
     text-align: center;
+    margin: 100px;
 }
 
 .diary-contents {
