@@ -55,9 +55,14 @@
       };
     })();
 
-    var fileName = location.search ? 'run-'+location.search.substr(1)+'__11-30-15' : 'outputText';
+    var fileName = 
+    "/outputText/" + (location.search ? 'run-'+location.search.substr(1)+'__11-30-15' : 'outputText') + ".json";
 
-    $.getJSON('/outputText/'+fileName+'.json', function (data) {
+    if(location.hostname.indexOf("github.io") !== -1) {
+      fileName = "https://raw.githubusercontent.com/rvinluan/AnotherLife/master/outputText/run-2__11-30-15.json"
+    }
+
+    $.getJSON(fileName, function (data) {
       var contents = $(".diary-contents"),
         newDiv;
       for(var entry in data) {
