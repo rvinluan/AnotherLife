@@ -21,6 +21,4 @@ soon! =)
 
 ##Also
 
-if you wish you can clone this repo, serve it locally (`python -m SimpleHTTPServer`) and check out `http://localhost:8000/index.html?2`. It's formatted nicer.
-
-The `?2` in the query string should give you my second run. do `?1` for the first run.
+Check out the [formatted version.](http://rvinluan.github.io/AnotherLife/)
