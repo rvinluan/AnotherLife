@@ -2,21 +2,17 @@
 This is a project for [NaNoGenMo 2015](https://github.com/dariusk/NaNoGenMo-2015).
 
 
-# Final Output
+---
 
-[Formatted and Redacted](http://rvinluan.github.io/AnotherLife/)
+__[View the final output here!](http://rvinluan.github.io/AnotherLife/)__
 
 For privacy reasons, some of this text has been redacted from the publicly available version.
 
-##The Premise
-[OhLife](http://ohlife.com/index.php) was an online diary service that you could write entries to via email. It shut down in 2014, but I had been using it for two years at that point and had written hundreds of entries. When it shut down I downloaded my entire archive of...60,000 words.
+---
 
-Right now my plan is to use this as a corpus to generate a diary novel that is an alternate universe version of my own life for those two years.
+## The Premise
+[OhLife](http://ohlife.com/index.php) was an online diary service that you could write entries to via email. It shut down in 2014, but I had been using it for two years at that point and had written hundreds of entries. When it shut down I downloaded my entire archive of about 60,000 words.
 
-At first I'm planning to simply do a sweep and replace proper nouns (most if not all are capitalized) with other, categorically similar proper nouns. The result is the story of my day to day life but all the details will be changed. I'll go to different restaurants, watch different TV shows, hang out with different people.
+*Another Life* is a novel generated based off of these diary entries. Much of the text remains the way that I wrote it, however all the names of People, Places, Organizations, Numbers (dates, times, quantities) and Media (TV, movies, video games) have been algorithmically replaced. 
 
-Afterwards I might try more fancy things like how to maintain continuity and context.
-
-##Writeup
-
-soon! =)
+The result is a version of my life that takes place in a slightly alternate universe than the original.
